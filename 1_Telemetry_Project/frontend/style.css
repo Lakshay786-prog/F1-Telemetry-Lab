@@ -1,0 +1,853 @@
+/* =========================================================
+   F1 TELEMETRY LAB
+   Red / Black Motorsport Theme
+   ========================================================= */
+
+:root {
+    --bg-main: #070707;
+    --bg-sidebar: #0b0b0b;
+    --bg-panel: #111111;
+    --bg-card: #151515;
+    --bg-input: #0c0c0c;
+
+    --border: #292929;
+    --border-light: #383838;
+
+    --red: #e10600;
+    --red-dark: #9f0000;
+    --red-light: #ff2b23;
+
+    --white: #ffffff;
+    --text: #d7d7d7;
+    --muted: #858585;
+
+    --green: #39d353;
+    --yellow: #ffc107;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Arial",
+        "Helvetica Neue",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(225, 6, 0, 0.08),
+            transparent 30%
+        ),
+        var(--bg-main);
+
+    color: var(--white);
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
+
+.topbar {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 32px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #080808,
+            #111111,
+            #080808
+        );
+
+    border-bottom: 1px solid #292929;
+
+    position: relative;
+}
+
+
+/* Red racing line */
+
+.topbar::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--red),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: var(--white);
+}
+
+.logo span {
+    color: var(--red);
+
+    margin-left: 8px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+   ========================================================= */
+
+.status {
+    display: flex;
+
+    align-items: center;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--muted);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    margin-right: 9px;
+
+    box-shadow:
+        0 0 8px rgba(57, 211, 83, 0.8);
+}
+
+
+/* =========================================================
+   MAIN APP
+   ========================================================= */
+
+.app {
+    display: flex;
+
+    min-height:
+        calc(100vh - 72px);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    width: 230px;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d0d,
+            #090909
+        );
+
+    border-right: 1px solid var(--border);
+
+    padding: 28px 16px;
+}
+
+
+/* Sidebar navigation */
+
+nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.nav-item {
+    position: relative;
+
+    border: none;
+
+    background: transparent;
+
+    color: #777;
+
+    padding: 15px 17px;
+
+    text-align: left;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+.nav-item:hover {
+    background: #181818;
+
+    color: white;
+
+    transform:
+        translateX(3px);
+}
+
+
+/* Active navigation */
+
+.nav-item.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(225, 6, 0, 0.20),
+            rgba(225, 6, 0, 0.04)
+        );
+
+    color: white;
+
+    border-left: 3px solid var(--red);
+}
+
+.nav-item.active::after {
+    content: "›";
+
+    position: absolute;
+
+    right: 15px;
+
+    color: var(--red);
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main {
+    flex: 1;
+
+    width: 100%;
+
+    max-width: 1700px;
+
+    padding: 36px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+    margin-bottom: 28px;
+
+    position: relative;
+}
+
+.eyebrow {
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 8px;
+}
+
+.page-header p:last-child {
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PANEL BASE
+   ========================================================= */
+
+.selection-panel,
+.track-panel,
+.graph-panel {
+    background:
+        linear-gradient(
+            145deg,
+            #141414,
+            #0e0e0e
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RACE SELECTION
+   ========================================================= */
+
+.selection-panel {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 14px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+.select-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.select-group label {
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+
+/* Select */
+
+select {
+    appearance: none;
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #151515,
+            #0b0b0b
+        );
+
+    border: 1px solid #303030;
+
+    border-radius: 5px;
+
+    color: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        border 0.2s,
+        box-shadow 0.2s;
+}
+
+select:hover {
+    border-color: #555;
+}
+
+select:focus {
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(225, 6, 0, 0.12);
+}
+
+
+/* =========================================================
+   TRACK PANEL
+   ========================================================= */
+
+.track-panel {
+    padding: 22px;
+
+    margin-bottom: 20px;
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.panel-header h2 {
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+/* Lap status */
+
+.lap-status {
+    padding: 7px 12px;
+
+    background: #090909;
+
+    border: 1px solid #303030;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+    letter-spacing: 1px;
+}
+
+.lap-status strong {
+    color: var(--red);
+
+    font-size: 17px;
+
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   TRACK
+   ========================================================= */
+
+.track {
+    height: 380px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #151515,
+            #080808 75%
+        );
+
+    border: 1px solid #222;
+}
+
+
+/* Grid */
+
+.track::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 35px 35px;
+}
+
+
+/* Track outline */
+
+.track-line {
+    position: absolute;
+
+    width: 72%;
+
+    height: 58%;
+
+    left: 14%;
+
+    top: 21%;
+
+    border: 9px solid #303030;
+
+    border-radius:
+        48% 52%
+        45% 55%;
+
+    box-shadow:
+        0 0 0 2px #111,
+        0 0 25px
+        rgba(225, 6, 0, 0.08);
+}
+
+
+/* Red racing line */
+
+.track-line::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -9px;
+
+    border: 2px dashed
+        rgba(225, 6, 0, 0.45);
+
+    border-radius:
+        inherit;
+}
+
+
+/* =========================================================
+   F1 CAR
+   ========================================================= */
+
+.car {
+    position: absolute;
+
+    left: 48%;
+
+    top: 20%;
+
+    font-size: 28px;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(225, 6, 0, 0.65)
+        );
+
+    transition:
+        left 0.35s linear,
+        top 0.35s linear;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   TELEMETRY CARDS
+   ========================================================= */
+
+.telemetry-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.telemetry-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0d0d0d
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    padding: 19px;
+
+    transition:
+        transform 0.2s,
+        border 0.2s;
+}
+
+.telemetry-card:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #454545;
+}
+
+
+/* Red top line */
+
+.telemetry-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red),
+            transparent
+        );
+}
+
+
+.telemetry-card span {
+    display: block;
+
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.telemetry-card strong {
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+.telemetry-card small {
+    color: var(--muted);
+
+    margin-left: 5px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   GRAPH PANEL
+   ========================================================= */
+
+.graph-panel {
+    padding: 22px;
+
+    margin-bottom: 30px;
+}
+
+.graph-placeholder {
+    height: 280px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    border:
+        1px dashed #303030;
+
+    border-radius: 6px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(255,255,255,0.025) 40px
+        );
+}
+
+.graph-placeholder p {
+    color: #555;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .selection-panel {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .telemetry-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 24px;
+    }
+
+    .selection-panel {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .main {
+        padding: 16px;
+    }
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .selection-panel,
+    .telemetry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .track {
+        height: 280px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+}
