@@ -1,294 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>F1 Telemetry Lab</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="./css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <header class="topbar">
-        <div class="logo">
-            F1<span>TELEMETRY</span>
+<!-- =====================================================
+     TOP NAVIGATION
+====================================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="f1-logo">
+            F1
         </div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            SYSTEM ONLINE
+        <div class="brand-text">
+
+            <h1>
+                TELEMETRY LAB
+            </h1>
+
+            <p>
+                FORMULA 1 DATA ANALYTICS
+            </p>
+
         </div>
-    </header>
-
-
-    <div class="app">
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-
-            <nav>
-                <button class="nav-item active">Dashboard</button>
-                <button class="nav-item">Races</button>
-                <button class="nav-item">Drivers</button>
-                <button class="nav-item">Telemetry</button>
-                <button class="nav-item">Analysis</button>
-            </nav>
-
-        </aside>
-
-
-        <!-- Main Content -->
-        <main class="main">
-
-            <section class="page-header">
-
-                <div>
-                    <p class="eyebrow">RACE ANALYSIS</p>
-                    <h1>F1 Telemetry Lab</h1>
-                    <p>
-                        Analyze lap-by-lap driver telemetry and performance.
-                    </p>
-                </div>
-
-            </section>
-
-
-            <!-- Race Selection -->
-            <section class="selection-panel">
-
-                <div class="select-group">
-                    <label for="season">Season</label>
-
-                    <select id="season">
-                        <option value="2026">2026</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                    </select>
-                </div>
-
-
-                <div class="select-group">
-                    <label for="race">Race</label>
-
-                    <select id="race">
-                        <option value="">Select Race</option>
-                        <option value="australia">
-                            Australian Grand Prix
-                        </option>
-
-                        <option value="japan">
-                            Japanese Grand Prix
-                        </option>
-
-                        <option value="monaco">
-                            Monaco Grand Prix
-                        </option>
-
-                        <option value="monza">
-                            Italian Grand Prix
-                        </option>
-                    </select>
-                </div>
-
-
-                <div class="select-group">
-                    <label for="session">Session</label>
-
-                    <select id="session">
-
-                        <option value="R">Race</option>
-                        <option value="Q">Qualifying</option>
-                        <option value="FP1">Practice 1</option>
-                        <option value="FP2">Practice 2</option>
-                        <option value="FP3">Practice 3</option>
-
-                    </select>
-                </div>
-
-
-                <div class="select-group">
-                    <label for="driver">Driver</label>
-
-                    <select id="driver">
-
-                        <option value="">Select Driver</option>
-
-                        <option value="VER">
-                            Max Verstappen
-                        </option>
-
-                        <option value="NOR">
-                            Lando Norris
-                        </option>
-
-                        <option value="LEC">
-                            Charles Leclerc
-                        </option>
-
-                        <option value="HAM">
-                            Lewis Hamilton
-                        </option>
-
-                    </select>
-                </div>
-
-
-                <div class="select-group">
-                    <label for="lap">Lap</label>
-
-                    <select id="lap">
-
-                        <option value="">Select Lap</option>
-
-                        <option value="1">Lap 1</option>
-                        <option value="2">Lap 2</option>
-                        <option value="3">Lap 3</option>
-                        <option value="4">Lap 4</option>
-                        <option value="5">Lap 5</option>
-
-                    </select>
-                </div>
-
-            </section>
-
-
-            <!-- Track -->
-            <section class="track-panel">
-
-                <div class="panel-header">
-
-                    <div>
-                        <p class="eyebrow">CIRCUIT</p>
-                        <h2>Track Visualization</h2>
-                    </div>
-
-                    <div class="lap-status">
-                        LAP <strong id="current-lap">32</strong>
-                    </div>
-
-                </div>
-
-
-                <div class="track">
-
-                    <div class="track-line"></div>
-
-                    <div class="car" id="car">
-                        🏎️
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- Telemetry Cards -->
-            <section class="telemetry-grid">
-
-                <div class="telemetry-card">
-
-                    <span>Speed</span>
-
-                    <strong id="speed">
-                        312
-                    </strong>
-
-                    <small>km/h</small>
-
-                </div>
-
-
-                <div class="telemetry-card">
-
-                    <span>Throttle</span>
-
-                    <strong id="throttle">
-                        98
-                    </strong>
-
-                    <small>%</small>
-
-                </div>
-
-
-                <div class="telemetry-card">
-
-                    <span>Brake</span>
-
-                    <strong id="brake">
-                        0
-                    </strong>
-
-                    <small>%</small>
-
-                </div>
-
-
-                <div class="telemetry-card">
-
-                    <span>Gear</span>
-
-                    <strong id="gear">
-                        8
-                    </strong>
-
-                </div>
-
-
-                <div class="telemetry-card">
-
-                    <span>RPM</span>
-
-                    <strong id="rpm">
-                        11,450
-                    </strong>
-
-                </div>
-
-
-                <div class="telemetry-card">
-
-                    <span>Lap Time</span>
-
-                    <strong id="lap-time">
-                        1:21.342
-                    </strong>
-
-                </div>
-
-            </section>
-
-
-            <!-- Graph Area -->
-            <section class="graph-panel">
-
-                <div class="panel-header">
-
-                    <div>
-                        <p class="eyebrow">TELEMETRY</p>
-                        <h2>Lap Telemetry</h2>
-                    </div>
-
-                </div>
-
-                <div class="graph-placeholder">
-
-                    <p>
-                        Telemetry graph will appear here
-                    </p>
-
-                </div>
-
-            </section>
-
-        </main>
 
     </div>
 
 
-    <script src="script.js"></script>
+    <div class="system-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+            DATA SYSTEM
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+====================================================== -->
+
+<main class="dashboard">
+
+
+    <!-- =================================================
+         SESSION SELECTOR
+    ================================================== -->
+
+    <section class="selector-panel">
+
+        <div class="section-title">
+
+            <span class="red-bar"></span>
+
+            <div>
+
+                <span>
+                    RACE CONTROL
+                </span>
+
+                <h2>
+                    SESSION SELECTOR
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="selectors">
+
+
+            <!-- YEAR -->
+
+            <div class="field">
+
+                <label>
+                    YEAR
+                </label>
+
+                <select id="yearSelect">
+
+                    <option value="2024">
+                        2024
+                    </option>
+
+                    <option value="2025">
+                        2025
+                    </option>
+
+                    <option value="2026">
+                        2026
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- RACE -->
+
+            <div class="field">
+
+                <label>
+                    RACE
+                </label>
+
+                <select id="raceSelect">
+
+                    <option value="Monza">
+                        Italian Grand Prix
+                    </option>
+
+                    <option value="Bahrain">
+                        Bahrain Grand Prix
+                    </option>
+
+                    <option value="Monaco">
+                        Monaco Grand Prix
+                    </option>
+
+                    <option value="Silverstone">
+                        British Grand Prix
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SESSION -->
+
+            <div class="field">
+
+                <label>
+                    SESSION
+                </label>
+
+                <select id="sessionSelect">
+
+                    <option value="R">
+                        Race
+                    </option>
+
+                    <option value="Q">
+                        Qualifying
+                    </option>
+
+                    <option value="FP3">
+                        Practice 3
+                    </option>
+
+                    <option value="FP2">
+                        Practice 2
+                    </option>
+
+                    <option value="FP1">
+                        Practice 1
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DRIVER -->
+
+            <div class="field">
+
+                <label>
+                    DRIVER
+                </label>
+
+                <select id="driverSelect">
+
+                    <option value="VER">
+                        VER — Verstappen
+                    </option>
+
+                    <option value="LEC">
+                        LEC — Leclerc
+                    </option>
+
+                    <option value="NOR">
+                        NOR — Norris
+                    </option>
+
+                    <option value="PIA">
+                        PIA — Piastri
+                    </option>
+
+                    <option value="HAM">
+                        HAM — Hamilton
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LAP -->
+
+            <div class="field">
+
+                <label>
+                    LAP
+                </label>
+
+                <select id="lapSelect">
+
+                    <option value="20">
+                        20
+                    </option>
+
+                    <option value="21">
+                        21
+                    </option>
+
+                    <option value="22">
+                        22
+                    </option>
+
+                    <option value="23">
+                        23
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="loadButton"
+                class="load-button"
+            >
+
+                LOAD SESSION
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <section class="main-grid">
+
+
+        <!-- =============================================
+             TRACK PANEL
+        ============================================== -->
+
+        <div class="card track-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <small>
+                        CIRCUIT
+                    </small>
+
+                    <h2 id="circuitName">
+                        MONZA
+                    </h2>
+
+                </div>
+
+
+                <div class="lap-display">
+
+                    <small>
+                        LAP
+                    </small>
+
+                    <strong id="lapNumber">
+                        20
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRACK -->
+
+            <div class="track-container">
+
+                <div class="track-map">
+
+
+                    <!-- Track -->
+
+                    <svg
+                        class="track-svg"
+                        viewBox="0 0 700 440"
+                    >
+
+                        <path
+                            class="track-shadow"
+                            d="
+                            M205 365
+                            C155 340 170 270 185 220
+                            C205 155 185 90 255 62
+                            C330 32 440 45 500 75
+                            C555 103 580 145 530 180
+                            L430 245
+                            C390 270 360 295 370 330
+                            C378 360 335 390 280 392
+                            C245 393 220 383 205 365
+                            Z
+                            "
+                        />
+
+                        <path
+                            class="track-line"
+                            d="
+                            M205 365
+                            C155 340 170 270 185 220
+                            C205 155 185 90 255 62
+                            C330 32 440 45 500 75
+                            C555 103 580 145 530 180
+                            L430 245
+                            C390 270 360 295 370 330
+                            C378 360 335 390 280 392
+                            C245 393 220 383 205 365
+                            Z
+                            "
+                        />
+
+                    </svg>
+
+
+                    <!-- CAR -->
+
+                    <div
+                        id="car"
+                        class="car"
+                    >
+                        F1
+                    </div>
+
+
+                    <!-- START -->
+
+                    <div class="start-label">
+                        START
+                    </div>
+
+                </div>
+
+
+                <div class="track-caption">
+
+                    LIVE CIRCUIT VISUALIZATION
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRACK FOOTER -->
+
+            <div class="track-footer">
+
+
+                <div>
+
+                    <small>
+                        DRIVER
+                    </small>
+
+                    <strong id="trackDriver">
+                        VER
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        SESSION
+                    </small>
+
+                    <strong id="trackSession">
+                        RACE
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        STATUS
+                    </small>
+
+                    <strong class="red">
+                        READY
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             TELEMETRY PANEL
+        ============================================== -->
+
+        <div class="card telemetry-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <small>
+                        LIVE DATA
+                    </small>
+
+                    <h2>
+                        TELEMETRY
+                    </h2>
+
+                </div>
+
+
+                <div class="record">
+
+                    <span></span>
+
+                    REC
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPEED -->
+
+            <div class="telemetry-row">
+
+                <div>
+
+                    <small>
+                        SPEED
+                    </small>
+
+                    <span>
+                        KM/H
+                    </span>
+
+                </div>
+
+                <strong id="speed">
+                    312
+                </strong>
+
+            </div>
+
+
+
+            <!-- THROTTLE -->
+
+            <div class="telemetry-row">
+
+                <div>
+
+                    <small>
+                        THROTTLE
+                    </small>
+
+                    <span>
+                        PERCENT
+                    </span>
+
+                </div>
+
+                <strong id="throttle">
+                    98
+                </strong>
+
+            </div>
+
+
+
+            <!-- BRAKE -->
+
+            <div class="telemetry-row">
+
+                <div>
+
+                    <small>
+                        BRAKE
+                    </small>
+
+                    <span>
+                        PERCENT
+                    </span>
+
+                </div>
+
+                <strong id="brake">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <!-- GEAR -->
+
+            <div class="telemetry-row gear-row">
+
+                <div>
+
+                    <small>
+                        GEAR
+                    </small>
+
+                    <span>
+                        CURRENT
+                    </span>
+
+                </div>
+
+                <strong id="gear">
+                    8
+                </strong>
+
+            </div>
+
+
+
+            <!-- RPM -->
+
+            <div class="telemetry-row">
+
+                <div>
+
+                    <small>
+                        RPM
+                    </small>
+
+                    <span>
+                        ENGINE
+                    </span>
+
+                </div>
+
+                <strong id="rpm">
+                    11000
+                </strong>
+
+            </div>
+
+
+
+            <!-- DRS -->
+
+            <div class="telemetry-row">
+
+                <div>
+
+                    <small>
+                        DRS
+                    </small>
+
+                    <span>
+                        STATUS
+                    </span>
+
+                </div>
+
+                <strong id="drs">
+                    OFF
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ANALYSIS
+    ================================================== -->
+
+    <section class="analysis-panel card">
+
+
+        <div class="section-title">
+
+            <span class="red-bar"></span>
+
+            <div>
+
+                <span>
+                    PERFORMANCE
+                </span>
+
+                <h2>
+                    TELEMETRY ANALYSIS
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="charts">
+
+
+            <!-- SPEED -->
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <span>
+                        SPEED
+                    </span>
+
+                    <strong id="speedValue">
+                        312 KM/H
+                    </strong>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chart-grid"></div>
+
+                    <svg
+                        viewBox="0 0 500 130"
+                        preserveAspectRatio="none"
+                    >
+
+                        <polyline
+                            class="chart-path"
+                            points="
+                            0,95
+                            35,70
+                            70,80
+                            105,45
+                            145,60
+                            185,30
+                            220,55
+                            260,25
+                            300,50
+                            340,35
+                            380,58
+                            420,25
+                            455,42
+                            500,18
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- THROTTLE -->
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <span>
+                        THROTTLE
+                    </span>
+
+                    <strong id="throttleValue">
+                        98%
+                    </strong>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chart-grid"></div>
+
+                    <svg
+                        viewBox="0 0 500 130"
+                        preserveAspectRatio="none"
+                    >
+
+                        <polyline
+                            class="chart-path"
+                            points="
+                            0,100
+                            45,95
+                            80,40
+                            125,30
+                            160,75
+                            205,25
+                            250,20
+                            290,55
+                            330,28
+                            375,32
+                            420,18
+                            460,30
+                            500,15
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BRAKE -->
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <span>
+                        BRAKE
+                    </span>
+
+                    <strong id="brakeValue">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="chart-grid"></div>
+
+                    <svg
+                        viewBox="0 0 500 130"
+                        preserveAspectRatio="none"
+                    >
+
+                        <polyline
+                            class="chart-path"
+                            points="
+                            0,112
+                            55,112
+                            80,105
+                            100,50
+                            120,108
+                            175,110
+                            205,35
+                            225,110
+                            290,112
+                            325,62
+                            345,110
+                            410,112
+                            440,45
+                            460,110
+                            500,112
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <span>
+            F1 TELEMETRY LAB
+        </span>
+
+        <span>
+            POWERED BY FASTF1
+        </span>
+
+        <span>
+            SYSTEM v1.0
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="./js/api.js"></script>
+
+<script src="./js/telemetry.js"></script>
+
+<script src="./js/track.js"></script>
+
+<script src="./js/race.js"></script>
+
+<script src="./js/app.js"></script>
 
 </body>
+
 </html>

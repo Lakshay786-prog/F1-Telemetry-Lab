@@ -1,0 +1,1104 @@
+:root {
+
+    --background: #060606;
+
+    --panel: #111111;
+
+    --panel-dark: #0b0b0b;
+
+    --border: #292929;
+
+    --border-light: #202020;
+
+    --red: #e10600;
+
+    --red-light: #ff2118;
+
+    --white: #f5f5f5;
+
+    --gray: #888888;
+
+    --dark-gray: #555555;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    background: var(--background);
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            #1c0807,
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #090909,
+            #050505
+        );
+
+    color: var(--white);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+
+    height: 84px;
+
+    padding: 0 42px;
+
+    background: #0d0d0d;
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+.f1-logo {
+
+    color: var(--red);
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+    letter-spacing: -4px;
+
+    text-shadow:
+        0 0 15px
+        rgba(225, 6, 0, .35);
+
+}
+
+
+.brand-text h1 {
+
+    font-size: 20px;
+
+    letter-spacing: 2.5px;
+
+}
+
+
+.brand-text p {
+
+    margin-top: 4px;
+
+    color: var(--gray);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #aaa;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    box-shadow:
+        0 0 12px
+        rgba(225, 6, 0, .9);
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+.dashboard {
+
+    width: min(1500px, 100%);
+
+    margin: auto;
+
+    padding: 30px 40px;
+
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+.card,
+.selector-panel {
+
+    background:
+        linear-gradient(
+            145deg,
+            #111111,
+            #0d0d0d
+        );
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 14px 35px
+        rgba(0, 0, 0, .25);
+
+}
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.red-bar {
+
+    width: 4px;
+
+    height: 28px;
+
+    background: var(--red);
+
+    box-shadow:
+        0 0 12px
+        rgba(225, 6, 0, .4);
+
+}
+
+
+.section-title span {
+
+    color: var(--gray);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.section-title h2 {
+
+    margin-top: 4px;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+}
+
+
+/* =====================================================
+   SESSION SELECTOR
+===================================================== */
+
+.selector-panel {
+
+    padding: 25px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.selectors {
+
+    display: grid;
+
+    grid-template-columns:
+        .65fr
+        1.35fr
+        .85fr
+        1.05fr
+        .55fr
+        auto;
+
+    gap: 13px;
+
+    align-items: end;
+
+}
+
+
+.field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.field label {
+
+    color: #777;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.field select {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    background: #080808;
+
+    color: white;
+
+    border:
+        1px solid #353535;
+
+    outline: none;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+}
+
+
+.field select:hover,
+.field select:focus {
+
+    border-color: var(--red);
+
+}
+
+
+.load-button {
+
+    height: 42px;
+
+    padding: 0 24px;
+
+    background: var(--red);
+
+    color: white;
+
+    border: none;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.load-button:hover {
+
+    background: var(--red-light);
+
+    box-shadow:
+        0 5px 20px
+        rgba(225, 6, 0, .25);
+
+}
+
+
+/* =====================================================
+   MAIN GRID
+===================================================== */
+
+.main-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(320px, 1fr);
+
+    gap: 24px;
+
+}
+
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.card-header {
+
+    height: 78px;
+
+    padding: 0 24px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.card-header small {
+
+    color: var(--gray);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.card-header h2 {
+
+    margin-top: 4px;
+
+    font-size: 19px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.lap-display {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.lap-display strong {
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 27px;
+
+}
+
+
+/* =====================================================
+   TRACK
+===================================================== */
+
+.track-container {
+
+    height: 470px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #181818,
+            #080808 72%
+        );
+
+}
+
+
+.track-map {
+
+    width: min(700px, 94%);
+
+    height: 390px;
+
+    position: relative;
+
+}
+
+
+.track-svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: visible;
+
+}
+
+
+.track-shadow {
+
+    fill: none;
+
+    stroke: #292929;
+
+    stroke-width: 18;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+
+.track-line {
+
+    fill: none;
+
+    stroke: var(--red);
+
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(225, 6, 0, .6)
+        );
+
+}
+
+
+.car {
+
+    position: absolute;
+
+    left: 29%;
+
+    top: 76%;
+
+    width: 36px;
+
+    height: 19px;
+
+    background: var(--red);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 3px;
+
+    font:
+        800 8px
+        "Courier New",
+        monospace;
+
+    box-shadow:
+        0 0 18px
+        rgba(225, 6, 0, .8);
+
+    transition:
+        left .08s linear,
+        top .08s linear;
+
+}
+
+
+.start-label {
+
+    position: absolute;
+
+    left: 31%;
+
+    top: 84%;
+
+    color: #aaa;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.track-caption {
+
+    color: #4f4f4f;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =====================================================
+   TRACK FOOTER
+===================================================== */
+
+.track-footer {
+
+    height: 70px;
+
+    padding: 0 24px;
+
+    border-top:
+        1px solid var(--border);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    align-items: center;
+
+}
+
+
+.track-footer div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.track-footer small {
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.track-footer strong {
+
+    font-size: 12px;
+
+}
+
+
+.red {
+
+    color: var(--red);
+
+}
+
+
+/* =====================================================
+   TELEMETRY
+===================================================== */
+
+.telemetry-card {
+
+    min-height: 618px;
+
+}
+
+
+.record {
+
+    color: #777;
+
+    font-size: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+}
+
+
+.record span {
+
+    width: 7px;
+
+    height: 7px;
+
+    background: var(--red);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 9px
+        rgba(225, 6, 0, .8);
+
+}
+
+
+.telemetry-row {
+
+    min-height: 90px;
+
+    padding: 0 24px;
+
+    border-bottom:
+        1px solid var(--border-light);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.telemetry-row div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.telemetry-row small {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.telemetry-row span {
+
+    color: #555;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.telemetry-row strong {
+
+    min-width: 90px;
+
+    text-align: right;
+
+    font:
+        600 26px
+        "Courier New",
+        monospace;
+
+}
+
+
+.gear-row {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(225, 6, 0, .04),
+            transparent
+        );
+
+}
+
+
+.gear-row strong {
+
+    color: var(--red);
+
+    font-size: 42px;
+
+    text-shadow:
+        0 0 16px
+        rgba(225, 6, 0, .4);
+
+}
+
+
+/* =====================================================
+   ANALYSIS
+===================================================== */
+
+.analysis-panel {
+
+    margin-top: 24px;
+
+    padding: 25px;
+
+}
+
+
+.charts {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.chart-card {
+
+    padding: 16px;
+
+    background: #0a0a0a;
+
+    border:
+        1px solid #252525;
+
+}
+
+
+.chart-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+
+}
+
+
+.chart-header span {
+
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.chart-header strong {
+
+    font:
+        600 11px
+        "Courier New",
+        monospace;
+
+}
+
+
+.chart {
+
+    height: 145px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #080808;
+
+}
+
+
+.chart-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 28px,
+            #202020 29px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 49px,
+            #202020 50px
+        );
+
+}
+
+
+.chart svg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+.chart-path {
+
+    fill: none;
+
+    stroke: var(--red);
+
+    stroke-width: 3;
+
+    vector-effect:
+        non-scaling-stroke;
+
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(225, 6, 0, .45)
+        );
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    margin-top: 30px;
+
+    padding: 20px 0;
+
+    border-top:
+        1px solid #252525;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #4f4f4f;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1150px) {
+
+    .selectors {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    .load-button {
+
+        width: 100%;
+
+    }
+
+
+    .main-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .telemetry-card {
+
+        min-height: auto;
+
+    }
+
+
+    .charts {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .topbar {
+
+        height: 74px;
+
+        padding: 0 18px;
+
+    }
+
+
+    .brand-text h1 {
+
+        font-size: 15px;
+
+    }
+
+
+    .system-status {
+
+        display: none;
+
+    }
+
+
+    .dashboard {
+
+        padding: 18px;
+
+    }
+
+
+    .selector-panel,
+    .analysis-panel {
+
+        padding: 18px;
+
+    }
+
+
+    .selectors {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .track-container {
+
+        height: 360px;
+
+    }
+
+
+    .track-map {
+
+        height: 300px;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+}
