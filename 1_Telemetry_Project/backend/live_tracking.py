@@ -4,7 +4,7 @@ import time
 
 import pandas as pd
 
-from fastf1_connection import get_fastf1
+from backend.fastf1_connection import get_fastf1
 
 
 # ==========================================================
